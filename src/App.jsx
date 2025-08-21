@@ -36,7 +36,11 @@ const App = () => {
                   </li>
                 </ul>
               </div>
-              <div></div>
+              <div>
+                <h4 className="text-lg font-semibold mb-4 text-indigo-300">
+                  User Experience
+                </h4>
+              </div>
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import {
   User,
   DollarSign,
@@ -13,6 +13,70 @@ import {
 import EditableCell from "./EditableCell";
 
 const EditableTable = () => {
+
+  const INITIAL_DATA = [
+    {
+      id: "1",
+      name: "Alice Johnson",
+      email: "alice.johnson@example.com",
+      roles: "Frontend Developer",
+      department: "Engineering",
+      salary: "95000",
+    },
+    {
+      id: "2",
+      name: "Bob Williams",
+      email: "bob.williams@example.com",
+      roles: "Product Manager",
+      department: "Product",
+      salary: "105000",
+    },
+    {
+      id: "3",
+      name: "Carol Lee",
+      email: "carol.lee@example.com",
+      roles: "UX Designer",
+      department: "Design",
+      salary: "87000",
+    },
+    {
+      id: "4",
+      name: "David Kim",
+      email: "david.kim@example.com",
+      roles: "Data Analyst",
+      department: "Analytics",
+      salary: "92000",
+    },
+    {
+      id: "5",
+      name: "Eva Brown",
+      email: "eva.brown@example.com",
+      roles: "HR Specialist",
+      department: "HR",
+      salary: "80000",
+    },
+    {
+      id: "6",
+      name: "Frank Miller",
+      email: "frank.miller@example.com",
+      roles: "Marketing Lead",
+      department: "Marketing",
+      salary: "99000",
+    },
+  ];
+
+    const DEPARTMENTS = [
+      "Engineering",
+      "Marketing",
+      "Sales",
+      "HR",
+      "Design",
+      "Product",
+      "Analytics",
+    ]
+  
+  const [data, setData] = useState(INITIAL_DATA);
+
   return (
     <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border boarder boarder-r-gray-100">
       <div className="bg-gradient-to-r from from-indigo-600 via-purple-600 to-indigo-700 px-8 py-6 ">

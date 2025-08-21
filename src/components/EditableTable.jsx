@@ -1,11 +1,18 @@
 import React from "react";
-import { User, DollarSign, TrendingUp, Plus } from "lucide-react";
+import {
+  User,
+  DollarSign,
+  TrendingUp,
+  Plus,
+  RotateCcw,
+  Search,
+} from "lucide-react";
 
 const EditableTable = () => {
   return (
     <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border boarder boarder-r-gray-100">
       <div className="bg-gradient-to-r from from-indigo-600 via-purple-600 to-indigo-700 px-8 py-6 ">
-        <div className="flex flex-cols lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
           <div className="flex items-center space-x-3">
             <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
               <User size={28} className="text-white " />
@@ -47,11 +54,22 @@ const EditableTable = () => {
               <Plus size={18} />
               <span>Add Employee</span>
             </button>
+            <button className="flex items-center space-x-2 bg-gradient-to-r from-gray-500 to-gray-600 hover:from-gray-600 hover:to-gray-700 text-white    px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow active:scale-95 ">
+              <RotateCcw size={18} />
+              <span>Undo</span>
+            </button>
+          </div>
+          <div className='flex flex-col sm:flex-row gap-2 w-full lg:w-auto'>
+            <div className="relative ">
+              <Search size={18} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 " />
+              <input type="text" placeholder="Search Employees" className="pl-12 pr-4 py-3  border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-50 focus:border-transparent transition-all duration-300 w-full sm:w-80 bg-white shadow-md "/>
+            </div>
+
           </div>
         </div>
       </div>
     </div>
   );
 };
-
+ 
 export default EditableTable;

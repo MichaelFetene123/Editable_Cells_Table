@@ -78,7 +78,7 @@ const EditableTable = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [departmentFilter, setDepartmentFilter] = useState("");
 
-  const filterData = useMemo(() => {
+  const filteredData = useMemo(() => {
     let filtered = data;
     if (searchTerm) {
       filtered = filtered.filter((row) => Object.values(row).some((value) => value.toString().toLowerCase().includes(searchTerm.toLowerCase())));
@@ -88,7 +88,18 @@ const EditableTable = () => {
       filtered = filtered.filter((row) => row.department === departmentFilter);
     }
     return filtered;
-  },[data, searchTerm, departmentFilter]);
+  }, [data, searchTerm, departmentFilter]);
+  
+  const getTotalSalary = () => {
+  return filteredData.reduce((sum, row ) => sum+row.salary, 0)
+  }
+  
+  const getAverageSalary = () => { 
+    return filteredData.length > 0
+      ? Math.round(getTotalSalary() / filteredData.length)
+      : 0;
+  }
+
   return (
     <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border boarder boarder-r-gray-100">
       <div className="bg-gradient-to-r from from-indigo-600 via-purple-600 to-indigo-700 px-8 py-6 ">

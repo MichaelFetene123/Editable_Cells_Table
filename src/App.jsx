@@ -22,6 +22,18 @@ const App = () => {
                     <div className=" w-2 h-2 bg-indigo-400 rounded-full "></div>
                     <span>React Hooks for statement management</span>
                   </li>
+                  <li className="flex item-center space-x-2">
+                    <div className=" w-2 h-2 bg-purple-400 rounded-full "></div>
+                    <span>Tailwind CSS for responsive design</span>
+                  </li>
+                  <li className="flex item-center space-x-2">
+                    <div className=" w-2 h-2 bg-green-400 rounded-full "></div>
+                    <span>Lucide React Icons</span>
+                  </li>
+                  <li className="flex item-center space-x-2">
+                    <div className=" w-2 h-2 bg-green-400 rounded-full "></div>
+                    <span>Keyboard navigation support</span>
+                  </li>
                 </ul>
               </div>
               <div></div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { User, DollarSign, TrendingUp } from "lucide-react";
+import { User, DollarSign, TrendingUp, Plus } from "lucide-react";
 
 const EditableTable = () => {
   return (
@@ -40,7 +40,16 @@ const EditableTable = () => {
         </div>
       </div>
       {/* controls */}
-      
+      <div className="px-8 py-6 bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center space-y-4 lg:space-y-0">
+          <div className="flex flex-wrap items-center gap-3 ">
+            <button className="flex items-center space-x-2 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white    px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow active:scale-95 ">
+              <Plus size={18} />
+              <span>Add Employee</span>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

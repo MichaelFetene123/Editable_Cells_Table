@@ -60,25 +60,69 @@ const EditableTable = () => {
               <span>Undo</span>
             </button>
           </div>
-          <div className='flex flex-col sm:flex-row gap-2 w-full lg:w-auto'>
+          <div className="flex flex-col sm:flex-row gap-2 w-full lg:w-auto">
             <div className="relative ">
-              <Search size={18} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 " />
-              <input type="text" placeholder="Search Employees" className="pl-12 pr-4 py-3  border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-50 focus:border-transparent transition-all duration-300 w-full sm:w-80 bg-white shadow-md "/>
+              <Search
+                size={18}
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 "
+              />
+              <input
+                type="text"
+                placeholder="Search Employees"
+                className="pl-12 pr-4 py-3  border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-50 focus:border-transparent transition-all duration-300 w-full sm:w-80 bg-white shadow-md "
+              />
             </div>
 
             <div className="relative ">
-              <Filter size={18} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 " />
-              <select type="text" placeholder="Search Employees" className="pl-12 pr-4 py-3  border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-50 focus:border-transparent transition-all duration-300 w-full sm:w-80 bg-white shadow-sm appearance-none cursor-pointer  ">
+              <Filter
+                size={18}
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 "
+              />
+              <select
+                type="text"
+                placeholder="Search Employees"
+                className="pl-12 pr-4 py-3  border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-50 focus:border-transparent transition-all duration-300 w-full sm:w-80 bg-white shadow-sm appearance-none cursor-pointer  "
+              >
                 <option value="">All Departments </option>
                 {/* i will add dynamic Content  */}
-              </select> 
+              </select>
             </div>
           </div>
         </div>
       </div>
-{/* Table */}
+
+      {/* Table */}
+      <div className="overflow-x-auto">
+        <table className="w-full">
+          <thead className="bg-gradient-to-r from-gray-100 to-gray-200">
+            <tr>
+              <th className="px-8 py-5  text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
+                Employee
+              </th>
+              <th className="px-8 py-5  text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
+                Contact
+              </th>
+              <th className="px-8 py-5  text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
+                Position
+              </th>
+              <th className="px-8 py-5  text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
+                Department
+              </th>
+              <th className="px-8 py-5  text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
+                Salary
+              </th>
+              <th className="px-8 py-5  text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody >
+
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
- 
+
 export default EditableTable;

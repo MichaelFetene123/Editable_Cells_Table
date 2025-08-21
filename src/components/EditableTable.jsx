@@ -186,7 +186,14 @@ const EditableTable = () => {
                 className="pl-12 pr-4 py-3  border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-50 focus:border-transparent transition-all duration-300 w-full sm:w-80 bg-white shadow-sm appearance-none cursor-pointer  "
               >
                 <option value="">All Departments </option>
-                {/* i will add dynamic Content  */}
+                {
+                  DEPARTMENTS.map((dept) => (
+                    <option key={dept} value={dept}>
+                      {dept}
+                    </option>
+                  ))
+                }
+                
               </select>
             </div>
           </div>
@@ -235,34 +242,47 @@ const EditableTable = () => {
           </tbody>
         </table>
         {/* Conditional Rendering */}
-        {/* <div className="text-center py-16">
-          <div className="text-gray-400 mb-4">
-            <Users size={64}  className="mx-auto mb-4 opacity-0"/>
+
+        {filteredData.length === 0 && (
+          <div className="text-center py-16">
+            <div className="text-gray-400 mb-4">
+              <Users size={64} className="mx-auto mb-4 opacity-0" />
+            </div>
+            <h3 className="text-xl font-semibold text-gray-600 mb-2">
+              No Employees Found{" "}
+            </h3>
+            <p className="text-gray-500">
+              Try adjusting your search criteria or filters.
+            </p>
           </div>
-          <h3 className="text-xl font-semibold text-gray-600 mb-2">No Employees Found </h3>
-          <p className="text-gray-500">Try adjusting your search criteria or filters.</p>
-        </div> */}
+        )}
       </div>
 
       {/* Footer */}
       <div className="px-8 py-6 bg-gradient-to-r from-gray-50 to-gray-100 border-t border-gray-200 ">
         <div className="flex flex-col lg:flex-row justify-between">
           <div className="text-sm text-gray-600">
-            Showing <span>{ filteredData.length}</span> of{' '}
+            Showing <span>{filteredData.length}</span> of{" "}
             <span className="font-semibold ">{data.length} </span>Employees
           </div>
           <div className="flex flex-wrap items-center  gap-6  text-sm text-gray-600 ">
             <div className="flex items-center space-x-2 ">
               <DollarSign size={16} className=" text-green-600" />
               <span>
-                Total Budget: <strong className="text-green-600 ">${getTotalSalary().toLocaleString()} </strong>
+                Total Budget:{" "}
+                <strong className="text-green-600 ">
+                  ${getTotalSalary().toLocaleString()}{" "}
+                </strong>
               </span>
             </div>
 
             <div className="flex items-center space-x-2 ">
               <TrendingUp size={16} className=" text-green-600" />
               <span>
-                Average: <strong className="text-green-600 ">${getAverageSalary().toLocaleString()} </strong>
+                Average:{" "}
+                <strong className="text-green-600 ">
+                  ${getAverageSalary().toLocaleString()}{" "}
+                </strong>
               </span>
             </div>
           </div>

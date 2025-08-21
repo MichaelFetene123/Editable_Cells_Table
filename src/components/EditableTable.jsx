@@ -8,6 +8,7 @@ import {
   Search,
   Filter,
   Trash2,
+  Users,
 } from "lucide-react";
 import EditableCell from "./EditableCell";
 
@@ -134,6 +135,19 @@ const EditableTable = () => {
             </tr>
           </tbody>
         </table>
+        {/* Conditional Rendering */}
+        {/* <div className="text-center py-16">
+          <div className="text-gray-400 mb-4">
+            <Users size={64}  className="mx-auto mb-4 opacity-0"/>
+          </div>
+          <h3 className="text-xl font-semibold text-gray-600 mb-2">No Employees Found </h3>
+          <p className="text-gray-500">Try adjusting your search criteria or filters.</p>
+        </div> */}
+      </div>
+
+      {/* Footer */}
+      <div className="px-8 py-6 bg-gradient-to-r from-gray-50 to-gray-100 border-t border-gray-200 ">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center space-y-3 lg:space-y-0 "></div>
       </div>
     </div>
   );

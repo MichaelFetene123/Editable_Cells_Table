@@ -13,8 +13,10 @@ const App = () => {
               Technical implements
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="text-lg font-semibold mb-4 text-indigo-300">
-                <h4>Key Features</h4>
+              <div>
+                <h4 className="text-lg font-semibold mb-4 text-indigo-300">
+                  Key Features
+                </h4>
                 <ul>
                   <li className="flex item-center space-x-2">
                     <div className=" w-2 h-2 bg-indigo-400 rounded-full "></div>

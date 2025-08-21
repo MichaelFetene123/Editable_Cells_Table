@@ -40,6 +40,24 @@ const App = () => {
                 <h4 className="text-lg font-semibold mb-4 text-indigo-300">
                   User Experience
                 </h4>
+                <ul>
+                  <li className="flex item-center space-x-2">
+                    <div className=" w-2 h-2 bg-indigo-400 rounded-full "></div>
+                    <span>Smooth animation and transitions</span>
+                  </li>
+                  <li className="flex item-center space-x-2">
+                    <div className=" w-2 h-2 bg-purple-400 rounded-full "></div>
+                    <span>Hover effects and micro-interactions</span>
+                  </li>
+                  <li className="flex item-center space-x-2">
+                    <div className=" w-2 h-2 bg-green-400 rounded-full "></div>
+                    <span>Mobile-first responsive design </span>
+                  </li>
+                  <li className="flex item-center space-x-2">
+                    <div className=" w-2 h-2 bg-green-400 rounded-full "></div>
+                    <span>Accessibility-focused interactions</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

@@ -7,7 +7,9 @@ import {
   RotateCcw,
   Search,
   Filter,
+  Trash2,
 } from "lucide-react";
+import EditableCell from "./EditableCell";
 
 const EditableTable = () => {
   return (
@@ -116,8 +118,20 @@ const EditableTable = () => {
               </th>
             </tr>
           </thead>
-          <tbody >
-
+          <tbody className="divide-y divide-gray-100">
+            <tr
+              className={`hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 transition-all duration-300 `}
+            >
+              <td className="px-8 py-4 ">
+                <EditableCell />
+                {/* i will use map method to get the data from object  */}
+              </td>
+              <td>
+                <button className="p-2 text-red-500  hover:text-red-700  hover:bg-red-100 rounded-lg transition-all duration-300 transform hover:scale-110 active:scale-95">
+                  <Trash2 size={16} />
+                </button>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>

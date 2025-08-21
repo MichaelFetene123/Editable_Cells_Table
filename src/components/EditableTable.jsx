@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState, useMemo } from "react";
 import {
   User,
   DollarSign,
@@ -13,7 +13,6 @@ import {
 import EditableCell from "./EditableCell";
 
 const EditableTable = () => {
-
   const INITIAL_DATA = [
     {
       id: "1",
@@ -65,18 +64,31 @@ const EditableTable = () => {
     },
   ];
 
-    const DEPARTMENTS = [
-      "Engineering",
-      "Marketing",
-      "Sales",
-      "HR",
-      "Design",
-      "Product",
-      "Analytics",
-    ]
-  
-  const [data, setData] = useState(INITIAL_DATA);
+  const DEPARTMENTS = [
+    "Engineering",
+    "Marketing",
+    "Sales",
+    "HR",
+    "Design",
+    "Product",
+    "Analytics",
+  ];
 
+  const [data, setData] = useState(INITIAL_DATA);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [departmentFilter, setDepartmentFilter] = useState("");
+
+  const filterData = useMemo(() => {
+    let filtered = data;
+    if (searchTerm) {
+      filtered = filtered.filter((row) => Object.values(row).some((value) => value.toString().toLowerCase().includes(searchTerm.toLowerCase())));
+    }
+
+    if(departmentFilter) {
+      filtered = filtered.filter((row) => row.department === departmentFilter);
+    }
+    return filtered;
+  },[data, searchTerm, departmentFilter]);
   return (
     <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border boarder boarder-r-gray-100">
       <div className="bg-gradient-to-r from from-indigo-600 via-purple-600 to-indigo-700 px-8 py-6 ">
@@ -134,6 +146,8 @@ const EditableTable = () => {
                 className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 "
               />
               <input
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
                 type="text"
                 placeholder="Search Employees"
                 className="pl-12 pr-4 py-3  border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-50 focus:border-transparent transition-all duration-300 w-full sm:w-80 bg-white shadow-md "
@@ -147,6 +161,8 @@ const EditableTable = () => {
               />
               <select
                 type="text"
+                value={departmentFilter}
+                onChange={(e) => setDepartmentFilter(e.target.value)}
                 placeholder="Search Employees"
                 className="pl-12 pr-4 py-3  border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-50 focus:border-transparent transition-all duration-300 w-full sm:w-80 bg-white shadow-sm appearance-none cursor-pointer  "
               >
@@ -227,7 +243,7 @@ const EditableTable = () => {
             <div className="flex items-center space-x-2 ">
               <TrendingUp size={16} className=" text-green-600" />
               <span>
-               Average: <strong className="text-green-600 ">5656 </strong>
+                Average: <strong className="text-green-600 ">5656 </strong>
               </span>
             </div>
           </div>

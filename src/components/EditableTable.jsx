@@ -20,7 +20,7 @@ const EditableTable = () => {
       email: "alice.johnson@example.com",
       roles: "Frontend Developer",
       department: "Engineering",
-      salary: "95000",
+      salary: "9500",
     },
     {
       id: "2",
@@ -28,7 +28,7 @@ const EditableTable = () => {
       email: "bob.williams@example.com",
       roles: "Product Manager",
       department: "Product",
-      salary: "105000",
+      salary: "5000",
     },
     {
       id: "3",
@@ -36,7 +36,7 @@ const EditableTable = () => {
       email: "carol.lee@example.com",
       roles: "UX Designer",
       department: "Design",
-      salary: "87000",
+      salary: "7000",
     },
     {
       id: "4",
@@ -44,7 +44,7 @@ const EditableTable = () => {
       email: "david.kim@example.com",
       roles: "Data Analyst",
       department: "Analytics",
-      salary: "92000",
+      salary: "2000",
     },
     {
       id: "5",
@@ -52,7 +52,7 @@ const EditableTable = () => {
       email: "eva.brown@example.com",
       roles: "HR Specialist",
       department: "HR",
-      salary: "80000",
+      salary: "8000",
     },
     {
       id: "6",
@@ -60,7 +60,7 @@ const EditableTable = () => {
       email: "frank.miller@example.com",
       roles: "Marketing Lead",
       department: "Marketing",
-      salary: "99000",
+      salary: "9000",
     },
   ];
 
@@ -81,24 +81,28 @@ const EditableTable = () => {
   const filteredData = useMemo(() => {
     let filtered = data;
     if (searchTerm) {
-      filtered = filtered.filter((row) => Object.values(row).some((value) => value.toString().toLowerCase().includes(searchTerm.toLowerCase())));
+      filtered = filtered.filter((row) =>
+        Object.values(row).some((value) =>
+          value.toString().toLowerCase().includes(searchTerm.toLowerCase())
+        )
+      );
     }
 
-    if(departmentFilter) {
+    if (departmentFilter) {
       filtered = filtered.filter((row) => row.department === departmentFilter);
     }
     return filtered;
   }, [data, searchTerm, departmentFilter]);
-  
+
   const getTotalSalary = () => {
-  return filteredData.reduce((sum, row ) => sum+row.salary, 0)
-  }
-  
-  const getAverageSalary = () => { 
+    return filteredData.reduce((sum, row) => sum + Number(row.salary), 0);
+  };
+
+  const getAverageSalary = () => {
     return filteredData.length > 0
       ? Math.round(getTotalSalary() / filteredData.length)
       : 0;
-  }
+  };
 
   return (
     <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border boarder boarder-r-gray-100">
@@ -121,17 +125,21 @@ const EditableTable = () => {
           <div className="flex flex-wrap items-center gap-4 text-white ">
             <div className="flex items-center space-x-2 bg-white/20 px-4 py-2 rounded-lg backdrop-blur-sm ">
               <User size={16} />
-              <span className="font-semibold">5</span>
+              <span className="font-semibold">{filteredData.length}</span>
               <span className="text-indigo-100"> Employees </span>
             </div>
             <div className="flex items-center space-x-2 bg-white/20 px-4 py-2 rounded-lg backdrop-blur-sm ">
               <DollarSign size={16} />
-              <span className="font-semibold">Total: 899534326</span>
+              <span className="font-semibold">
+                ${getTotalSalary().toLocaleString()}
+              </span>
               <span className="text-indigo-100"> Total </span>
             </div>
             <div className="flex items-center space-x-2 bg-white/20 px-4 py-2 rounded-lg backdrop-blur-sm ">
               <TrendingUp size={16} />
-              <span className="font-semibold">Avg: 47609239</span>
+              <span className="font-semibold">
+                ${getAverageSalary().toLocaleString()}
+              </span>
               <span className="text-indigo-100"> Avg </span>
             </div>
           </div>
@@ -238,23 +246,23 @@ const EditableTable = () => {
 
       {/* Footer */}
       <div className="px-8 py-6 bg-gradient-to-r from-gray-50 to-gray-100 border-t border-gray-200 ">
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center space-y-3 lg:space-y-0 ">
+        <div className="flex flex-col lg:flex-row justify-between">
           <div className="text-sm text-gray-600">
-            Showing <span>Employee Length 656</span> of{" "}
-            <span className="font-semibold ">user length </span>Employees
+            Showing <span>{ filteredData.length}</span> of{' '}
+            <span className="font-semibold ">{data.length} </span>Employees
           </div>
           <div className="flex flex-wrap items-center  gap-6  text-sm text-gray-600 ">
             <div className="flex items-center space-x-2 ">
               <DollarSign size={16} className=" text-green-600" />
               <span>
-                Total Budget: <strong className="text-green-600 ">5656 </strong>
+                Total Budget: <strong className="text-green-600 ">${getTotalSalary().toLocaleString()} </strong>
               </span>
             </div>
 
             <div className="flex items-center space-x-2 ">
               <TrendingUp size={16} className=" text-green-600" />
               <span>
-                Average: <strong className="text-green-600 ">5656 </strong>
+                Average: <strong className="text-green-600 ">${getAverageSalary().toLocaleString()} </strong>
               </span>
             </div>
           </div>

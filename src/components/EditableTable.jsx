@@ -6,6 +6,7 @@ import {
   Plus,
   RotateCcw,
   Search,
+  Filter,
 } from "lucide-react";
 
 const EditableTable = () => {
@@ -65,9 +66,17 @@ const EditableTable = () => {
               <input type="text" placeholder="Search Employees" className="pl-12 pr-4 py-3  border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-50 focus:border-transparent transition-all duration-300 w-full sm:w-80 bg-white shadow-md "/>
             </div>
 
+            <div className="relative ">
+              <Filter size={18} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 " />
+              <select type="text" placeholder="Search Employees" className="pl-12 pr-4 py-3  border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-50 focus:border-transparent transition-all duration-300 w-full sm:w-80 bg-white shadow-sm appearance-none cursor-pointer  ">
+                <option value="">All Departments </option>
+                {/* i will add dynamic Content  */}
+              </select> 
+            </div>
           </div>
         </div>
       </div>
+{/* Table */}
     </div>
   );
 };

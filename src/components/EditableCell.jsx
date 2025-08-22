@@ -24,7 +24,17 @@ const EditableCell = ({
   }
 
   // step 6
-
+  const validateInput = (val) => { 
+    if (type === "email") {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(val.toString());
+    }
+    if (type === "number") {
+      return !isNaN(Number(val)) && Number(val) >= 0;
+    }
+    return val.toString().trim().length > 0;
+  };
+  
   return (
     <div className="relative px-3 py-3 cursor-pointer hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 rounded-lg transition-all duration-300 group border border-transparent hover:border-indigo-200 hover:shadow-sm">
       <div

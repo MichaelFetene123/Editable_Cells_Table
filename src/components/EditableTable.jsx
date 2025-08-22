@@ -287,18 +287,26 @@ const EditableTable = () => {
                   {/* i will use map method to get the data from object  */}
                 </td>
                 <td className="px-8 py-4 ">
-                  <div className="flex items-center">
-                    <span
-                      className={`px-3 py-1 rounded-full text-xs font-semibold ${getDepartmentColor(
-                        row.department
-                      )}`}
-                    >
-                      {row.department}
-                    </span>
-                  </div>
+                  <EditableCell
+                    value={row.role}
+                    rowId={row.id}
+                    filed="role"
+                    isEditing={
+                      editingCell?.rowId === row.id &&
+                      editingCell?.field === "role"
+                    }
+                    onEdit={handleEdit}
+                    onCancel={handleCancel}
+                    type={getFieldType("role")}
+                  />
+                  {/* i will use map method to get the data from object  */}
                 </td>
                 <td className="px-8 py-4 ">
-                  />
+                  <div className="flex items-center">
+                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getDepartmentColor(row.department)}`}>
+                      {row.department}
+                    </span>
+               </div>
                   {/* i will use map method to get the data from object  */}
                 </td>
                 <td className="px-8 py-4 ">

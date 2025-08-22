@@ -74,6 +74,18 @@ const EditableTable = () => {
     "Analytics",
   ];
 
+  const getDepartmentColor = (department) => {
+    const colors = {
+      Engineering: "bg-blue-100 text-blue-800",
+      Marketing: "bg-pink-100 text-pink-800",
+      Sales: "bg-yellow-100 text-yellow-800",
+      HR: "bg-indigo-100 text-indigo-800",
+      Design: "bg-purple-100 text-purple-800",
+      Product: "bg-green-100 text-green-800",
+      Analytics: "bg-orange-100 text-orange-800",
+    };
+    return colors[department] || "bg-gray-100 text-gray-800";
+  };
   const [data, setData] = useState(INITIAL_DATA);
   const [searchTerm, setSearchTerm] = useState("");
   const [departmentFilter, setDepartmentFilter] = useState("");
@@ -118,7 +130,7 @@ const EditableTable = () => {
 
   const handleCancel = () => {
     setEditingCell(null);
-  }
+  };
   return (
     <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border boarder boarder-r-gray-100">
       <div className="bg-gradient-to-r from from-indigo-600 via-purple-600 to-indigo-700 px-8 py-6 ">
@@ -275,32 +287,17 @@ const EditableTable = () => {
                   {/* i will use map method to get the data from object  */}
                 </td>
                 <td className="px-8 py-4 ">
-                  <EditableCell
-                    value={row.role}
-                    rowId={row.id}
-                    filed="role"
-                    isEditing={
-                      editingCell?.rowId === row.id &&
-                      editingCell?.field === "role"
-                    }
-                    onEdit={handleEdit}
-                    onCancel={handleCancel}
-                    type={getFieldType("role")}
-                  />
-                  {/* i will use map method to get the data from object  */}
+                  <div className="flex items-center">
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs font-semibold ${getDepartmentColor(
+                        row.department
+                      )}`}
+                    >
+                      {row.department}
+                    </span>
+                  </div>
                 </td>
                 <td className="px-8 py-4 ">
-                  <EditableCell
-                    value={row.department}
-                    rowId={row.id}
-                    filed="department"
-                    isEditing={
-                      editingCell?.rowId === row.id &&
-                      editingCell?.field === "department"
-                    }
-                    onEdit={handleEdit}
-                    onCancel={handleCancel}
-                    type={getFieldType("department")}
                   />
                   {/* i will use map method to get the data from object  */}
                 </td>

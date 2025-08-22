@@ -17,48 +17,48 @@ const EditableTable = () => {
     {
       id: "1",
       name: "Alice Johnson",
-      email: "alice.johnson@example.com",
-      roles: "Frontend Developer",
+      email: "alice@example.com",
+      role: "Frontend Developer",
       department: "Engineering",
       salary: "9500",
     },
     {
       id: "2",
       name: "Bob Williams",
-      email: "bob.williams@example.com",
-      roles: "Product Manager",
+      email: "bob@example.com",
+      role: "Product Manager",
       department: "Product",
       salary: "5000",
     },
     {
       id: "3",
       name: "Carol Lee",
-      email: "carol.lee@example.com",
-      roles: "UX Designer",
+      email: "lee@example.com",
+      role: "UX Designer",
       department: "Design",
       salary: "7000",
     },
     {
       id: "4",
       name: "David Kim",
-      email: "david.kim@example.com",
-      roles: "Data Analyst",
+      email: "kim@example.com",
+      role: "Data Analyst",
       department: "Analytics",
       salary: "2000",
     },
     {
       id: "5",
       name: "Eva Brown",
-      email: "eva.brown@example.com",
-      roles: "HR Specialist",
+      email: "brown@gmail.com",
+      role: "HR Specialist",
       department: "HR",
       salary: "8000",
     },
     {
       id: "6",
       name: "Frank Miller",
-      email: "frank.miller@example.com",
-      roles: "Marketing Lead",
+      email: "frank@example.com",
+      role: "Marketing Lead",
       department: "Marketing",
       salary: "9000",
     },
@@ -271,6 +271,21 @@ const EditableTable = () => {
                     onEdit={handleEdit}
                     onCancel={handleCancel}
                     type={getFieldType("email")}
+                  />
+                  {/* i will use map method to get the data from object  */}
+                </td>
+                <td className="px-8 py-4 ">
+                  <EditableCell
+                    value={row.role}
+                    rowId={row.id}
+                    filed="role"
+                    isEditing={
+                      editingCell?.rowId === row.id &&
+                      editingCell?.field === "role"
+                    }
+                    onEdit={handleEdit}
+                    onCancel={handleCancel}
+                    type={getFieldType("role")}
                   />
                   {/* i will use map method to get the data from object  */}
                 </td>

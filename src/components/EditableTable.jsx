@@ -183,17 +183,14 @@ const EditableTable = () => {
                 value={departmentFilter}
                 onChange={(e) => setDepartmentFilter(e.target.value)}
                 placeholder="Search Employees"
-                className="pl-12 pr-4 py-3  border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-50 focus:border-transparent transition-all duration-300 w-full sm:w-80 bg-white shadow-sm appearance-none cursor-pointer  "
+                className="pl-12 pr-8 py-3  border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-50 focus:border-transparent transition-all duration-300 w-full sm:w-80 bg-white shadow-sm appearance-none cursor-pointer  "
               >
                 <option value="">All Departments </option>
-                {
-                  DEPARTMENTS.map((dept) => (
-                    <option key={dept} value={dept}>
-                      {dept}
-                    </option>
-                  ))
-                }
-                
+                {DEPARTMENTS.map((dept) => (
+                  <option key={dept} value={dept}>
+                    {dept}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
@@ -226,19 +223,23 @@ const EditableTable = () => {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
-            <tr
-              className={`hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 transition-all duration-300 `}
-            >
-              <td className="px-8 py-4 ">
-                <EditableCell />
-                {/* i will use map method to get the data from object  */}
-              </td>
-              <td>
-                <button className="p-2 text-red-500  hover:text-red-700  hover:bg-red-100 rounded-lg transition-all duration-300 transform hover:scale-110 active:scale-95">
-                  <Trash2 size={16} />
-                </button>
-              </td>
-            </tr>
+            {filteredData.map((row, index) => (
+              <tr
+                className={`hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 transition-all duration-300 ${
+                  index % 2 === 0 ? "bg-white" : "bg-gray-50/100"
+                }`}
+              >
+                <td className="px-8 py-4 ">
+                  <EditableCell value={row.name} rowId={row.id} filed="name" />
+                  {/* i will use map method to get the data from object  */}
+                </td>
+                <td>
+                  <button className="p-2 text-red-500  hover:text-red-700  hover:bg-red-100 rounded-lg transition-all duration-300 transform hover:scale-110 active:scale-95">
+                    <Trash2 size={16} />
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
         {/* Conditional Rendering */}

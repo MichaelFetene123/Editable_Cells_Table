@@ -253,9 +253,24 @@ const EditableTable = () => {
                       editingCell?.rowId === row.id &&
                       editingCell?.field === "name"
                     }
-                    onEdit={() => handleEdit(row.id, "name")}
+                    onEdit={handleEdit}
                     onCancel={handleCancel}
                     type={getFieldType("name")}
+                  />
+                  {/* i will use map method to get the data from object  */}
+                </td>
+                <td className="px-8 py-4 ">
+                  <EditableCell
+                    value={row.email}
+                    rowId={row.id}
+                    filed="email"
+                    isEditing={
+                      editingCell?.rowId === row.id &&
+                      editingCell?.field === "email"
+                    }
+                    onEdit={handleEdit}
+                    onCancel={handleCancel}
+                    type={getFieldType("email")}
                   />
                   {/* i will use map method to get the data from object  */}
                 </td>

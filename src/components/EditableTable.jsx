@@ -78,6 +78,8 @@ const EditableTable = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [departmentFilter, setDepartmentFilter] = useState("");
 
+  const [editingCell, setEditingCell] = useState(null);
+
   const filteredData = useMemo(() => {
     let filtered = data;
     if (searchTerm) {
@@ -104,6 +106,17 @@ const EditableTable = () => {
       : 0;
   };
 
+  const handleEdit = (rowId, field) => {
+    setEditingCell({ rowId, field });
+  };
+
+  const getFieldType = (field) => {
+    if (field === "email") return "email";
+    if (field === "salary") return "number";
+    return "text";
+  };
+
+  
   return (
     <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border boarder boarder-r-gray-100">
       <div className="bg-gradient-to-r from from-indigo-600 via-purple-600 to-indigo-700 px-8 py-6 ">
@@ -230,7 +243,17 @@ const EditableTable = () => {
                 }`}
               >
                 <td className="px-8 py-4 ">
-                  <EditableCell value={row.name} rowId={row.id} filed="name" />
+                  <EditableCell
+                    value={row.name}
+                    rowId={row.id}
+                    filed="name"
+                    isEditing={
+                      editingCell?.rowId === row.id &&
+                      editingCell?.field === "name"
+                    }
+                    onEdit={() => handleEdit(row.id, "name")}
+                    type={getFieldType("name")}
+                  />
                   {/* i will use map method to get the data from object  */}
                 </td>
                 <td>

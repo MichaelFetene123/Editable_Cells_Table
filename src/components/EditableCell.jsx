@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Edit3, Check, X } from "lucide-react";
 
 const EditableCell = ({
@@ -10,7 +10,21 @@ const EditableCell = ({
   type = "text",
   onCancel,
 }) => {
+
   const [showEditIcon, setShowEditIcon] = useState(false);
+  const inputRef = useRef(null);
+  const [editValue, setEditValue] = useState(value);
+  const [isValid, setIsValid] = useState(true);
+
+  const formatValue = (val) => {
+    if (type === "number" && typeof val === "number") {
+      return filed === 'salary' ? `${val.toLocaleString()} ` : `${val.toString()}`;
+    }
+    return val.toString();
+  }
+
+  // step 6
+
   return (
     <div className="relative px-3 py-3 cursor-pointer hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 rounded-lg transition-all duration-300 group border border-transparent hover:border-indigo-200 hover:shadow-sm">
       <div

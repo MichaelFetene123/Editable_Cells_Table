@@ -116,7 +116,9 @@ const EditableTable = () => {
     return "text";
   };
 
-  
+  const handleCancel = () => {
+    setEditingCell(null);
+  }
   return (
     <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border boarder boarder-r-gray-100">
       <div className="bg-gradient-to-r from from-indigo-600 via-purple-600 to-indigo-700 px-8 py-6 ">
@@ -252,6 +254,7 @@ const EditableTable = () => {
                       editingCell?.field === "name"
                     }
                     onEdit={() => handleEdit(row.id, "name")}
+                    onCancel={handleCancel}
                     type={getFieldType("name")}
                   />
                   {/* i will use map method to get the data from object  */}

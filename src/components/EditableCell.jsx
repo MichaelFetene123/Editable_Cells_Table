@@ -7,6 +7,7 @@ const EditableCell = ({
   filed,
   isEditing,
   onEdit,
+  onSave,
   type = "text",
   onCancel,
 }) => {
@@ -36,6 +37,16 @@ const EditableCell = ({
     return val.toString().trim().length > 0;
   };
 
+  const handleSave = () => {
+    if (validateInput(editValue)) {
+      const finalValue = type === "number" ? Number(editValue) : editValue;
+      onSave(rowId, filed, finalValue);
+      setIsValid(true);
+    } else {
+      setIsValid(false);
+    }
+  };
+
   if (isEditing) {
     return (
       //conditional rendering design
@@ -56,6 +67,7 @@ const EditableCell = ({
           <button
             className="p-1.5 text-emerald-600 hover:text-emerald-700 hover:bg-emerald-100 rounded-lg transition-all duration-200 transform hover:scale-110 active:scale-95"
             title="Save Changes"
+            onClick={handleSave}
           >
             <Check size={14} />
           </button>

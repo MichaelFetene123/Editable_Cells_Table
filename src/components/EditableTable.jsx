@@ -91,6 +91,8 @@ const EditableTable = () => {
   const [departmentFilter, setDepartmentFilter] = useState("");
 
   const [editingCell, setEditingCell] = useState(null);
+  const [history, setHistory] = useState([INITIAL_DATA]);
+  const [historyIndex, setHistoryIndex] = useState(0);
 
   const filteredData = useMemo(() => {
     let filtered = data;
@@ -131,6 +133,24 @@ const EditableTable = () => {
   const handleCancel = () => {
     setEditingCell(null);
   };
+
+  const handleSave = (rowId, field, newValue) => {
+    const valueToSave = field === "salary" ? Number(newValue) : newValue;
+    const newData = data.map((row) =>
+      row.id === rowId ? { ...row, [field]: valueToSave } : row
+    );
+    setData(newData);
+    SaveToHistory(newData);
+    setEditingCell(null);
+  };
+
+  const SaveToHistory = (newData) => {
+    const newHistory = history.slice(0, historyIndex + 1);
+    newHistory.push(newData);
+    setHistory(newHistory);
+    setHistoryIndex(newHistory.length - 1);
+  };
+
   return (
     <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border boarder boarder-r-gray-100">
       <div className="bg-gradient-to-r from from-indigo-600 via-purple-600 to-indigo-700 px-8 py-6 ">
@@ -265,6 +285,7 @@ const EditableTable = () => {
                       editingCell?.rowId === row.id &&
                       editingCell?.field === "name"
                     }
+                    onSave={handleSave}
                     onEdit={handleEdit}
                     onCancel={handleCancel}
                     type={getFieldType("name")}
@@ -280,6 +301,7 @@ const EditableTable = () => {
                       editingCell?.rowId === row.id &&
                       editingCell?.field === "email"
                     }
+                    onSave={handleSave}
                     onEdit={handleEdit}
                     onCancel={handleCancel}
                     type={getFieldType("email")}
@@ -295,6 +317,7 @@ const EditableTable = () => {
                       editingCell?.rowId === row.id &&
                       editingCell?.field === "role"
                     }
+                    onSave={handleSave}
                     onEdit={handleEdit}
                     onCancel={handleCancel}
                     type={getFieldType("role")}
@@ -303,10 +326,14 @@ const EditableTable = () => {
                 </td>
                 <td className="px-8 py-4 ">
                   <div className="flex items-center">
-                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getDepartmentColor(row.department)}`}>
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs font-semibold ${getDepartmentColor(
+                        row.department
+                      )}`}
+                    >
                       {row.department}
                     </span>
-               </div>
+                  </div>
                   {/* i will use map method to get the data from object  */}
                 </td>
                 <td className="px-8 py-4 ">
@@ -318,6 +345,7 @@ const EditableTable = () => {
                       editingCell?.rowId === row.id &&
                       editingCell?.field === "salary"
                     }
+                    onSave={handleSave}
                     onEdit={handleEdit}
                     onCancel={handleCancel}
                     type={getFieldType("salary")}

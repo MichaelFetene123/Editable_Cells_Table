@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import { Edit3, Check, X } from "lucide-react";
 
-const EditableCell = ({ value, rowId, filed, isEditing, onEdit,type='text' }) => {
+const EditableCell = ({
+  value,
+  rowId,
+  filed,
+  isEditing,
+  onEdit,
+  type = "text",
+  onCancel,
+}) => {
   const [showEditIcon, setShowEditIcon] = useState(false);
   return (
     <div className="relative px-3 py-3 cursor-pointer hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 rounded-lg transition-all duration-300 group border border-transparent hover:border-indigo-200 hover:shadow-sm">

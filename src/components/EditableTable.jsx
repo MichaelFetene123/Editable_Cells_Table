@@ -178,6 +178,15 @@ const EditableTable = () => {
     }
   };
 
+  const handleDeleteRow = (id) => {
+    const newData = data.filter((row) => row.id !== id);
+    setData(newData);
+    SaveToHistory(newData);
+    if (editingCell?.rowId === id) {
+      setEditingCell(null);
+    }
+  };
+
   return (
     <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border boarder boarder-r-gray-100">
       <div className="bg-gradient-to-r from from-indigo-600 via-purple-600 to-indigo-700 px-8 py-6 ">
@@ -385,7 +394,7 @@ const EditableTable = () => {
                   {/* i will use map method to get the data from object  */}
                 </td>
                 <td>
-                  <button className="p-2 text-red-500  hover:text-red-700  hover:bg-red-100 rounded-lg transition-all duration-300 transform hover:scale-110 active:scale-95">
+                  <button className="p-2 text-red-500  hover:text-red-700  hover:bg-red-100 rounded-lg transition-all duration-300 transform hover:scale-110 active:scale-95" onClick={() => handleDeleteRow(row.id)}>
                     <Trash2 size={16} />
                   </button>
                 </td>

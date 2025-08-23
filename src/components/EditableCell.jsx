@@ -16,6 +16,12 @@ const EditableCell = ({
   const [editValue, setEditValue] = useState(value);
   const [isValid, setIsValid] = useState(true);
 
+  useEffect(() => {
+  setEditValue(value);
+},[value])
+
+
+
   const formatValue = (val) => {
     if (type === "number" && typeof val === "number") {
       return filed === "salary"

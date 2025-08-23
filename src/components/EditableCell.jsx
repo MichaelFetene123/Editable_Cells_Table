@@ -25,7 +25,7 @@ const EditableCell = ({
       inputRef.current.focus()
       inputRef.current.select()
     }
-},[])
+},[isEditing])
 
   const formatValue = (val) => {
     if (type === "number" && typeof val === "number") {

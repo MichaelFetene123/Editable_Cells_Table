@@ -169,6 +169,15 @@ const EditableTable = () => {
     SaveToHistory(newData);
   };
 
+  const handleUndo = () => {
+    if (historyIndex > 0) {
+      const previousData = history[historyIndex - 1];
+      setData(previousData);
+      setHistoryIndex(historyIndex - 1);
+      setEditingCell(null);
+    }
+  };
+
   return (
     <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border boarder boarder-r-gray-100">
       <div className="bg-gradient-to-r from from-indigo-600 via-purple-600 to-indigo-700 px-8 py-6 ">
@@ -221,7 +230,9 @@ const EditableTable = () => {
               <Plus size={18} />
               <span>Add Employee</span>
             </button>
-            <button className="flex items-center space-x-2 bg-gradient-to-r from-gray-500 to-gray-600 hover:from-gray-600 hover:to-gray-700 text-white    px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow active:scale-95 ">
+            <button className="flex items-center space-x-2 bg-gradient-to-r from-gray-500 to-gray-600 hover:from-gray-600 hover:to-gray-700 text-white    px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow active:scale-95 "
+              onClick={handleUndo}
+            >
               <RotateCcw size={18} />
               <span>Undo</span>
             </button>

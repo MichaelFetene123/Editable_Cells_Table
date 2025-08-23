@@ -20,7 +20,12 @@ const EditableCell = ({
   setEditValue(value);
 },[value])
 
-
+  useEffect(() => {
+    if (isEditing && inputRef.current) {
+      inputRef.current.focus()
+      inputRef.current.select()
+    }
+},[])
 
   const formatValue = (val) => {
     if (type === "number" && typeof val === "number") {

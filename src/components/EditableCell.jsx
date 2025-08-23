@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Edit3, Check, X } from "lucide-react";
 
 const EditableCell = ({
@@ -58,6 +58,12 @@ const EditableCell = ({
     }
   };
 
+const handleCancel = () => {
+  setEditValue(value);
+  setIsValid(true);
+  onCancel();
+};  
+
   if (isEditing) {
     return (
       //conditional rendering design
@@ -85,7 +91,7 @@ const EditableCell = ({
           <button
             className="p-1.5 text-red-600 hover:text-red-700 hover:bg-red-100 rounded-lg transition-all duration-200 transform hover:scale-110 active:scale-95"
             title="Discard Changes"
-            onClick={onCancel}
+            onClick={handleCancel}
           >
             <X size={14} />
           </button>

@@ -152,8 +152,10 @@ const EditableTable = () => {
   };
 
   const handleAddRow = () => {
-    const newId =
-      Math.max(...data.map((row) => parseInt(row.id))) + (1).toString();
+   const newId = (
+     Math.max(...data.map((row) => parseInt(row.id))) + 1
+   ).toString();
+      
     const newRow = {
       id: newId,
       name: "New Employee",
